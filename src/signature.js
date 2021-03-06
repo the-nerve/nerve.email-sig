@@ -1,9 +1,9 @@
 import {signatureConfig, colors} from './config';
 
 /*
-  Compile a mjml string
-  For overriding link colors forced by email clients:
-  https://www.litmus.com/blog/how-to-remove-blue-links-in-html-emails/
+  For overriding link colors forced by email clients: https://www.litmus.com/blog/how-to-remove-blue-links-in-html-emails/
+  Dark Mode reference: https://www.litmus.com/blog/the-ultimate-guide-to-dark-mode-for-email-marketers/#
+  Inline with: https://htmlemail.io/inline/
 */
 export const signatures =  signatureConfig.people.map( ({firstName, lastName, role, avatar}) => `
     <!DOCTYPE html>
