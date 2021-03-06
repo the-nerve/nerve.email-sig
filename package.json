@@ -1,0 +1,36 @@
+{
+  "name": "nerve.email-sig",
+  "version": "1.0.0",
+  "description": "An email signature template for The Nerve",
+  "main": "index.js",
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build",
+    "mjml": "mjml src/signature.mjml -o dist/output.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://codingwithchris@github.com/the-nerve/nerve.email-sig.git"
+  },
+  "keywords": [
+    "mjml",
+    "email",
+    "signature",
+    "nerve",
+    "theatre"
+  ],
+  "author": "Chris Hahn <chris@chrishahn.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/the-nerve/nerve.email-sig/issues"
+  },
+  "homepage": "https://github.com/the-nerve/nerve.email-sig#readme",
+  "dependencies": {
+    "mjml": "^4.8.1",
+    "mjml-browser": "^4.8.1"
+  },
+  "devDependencies": {
+    "snowpack": "^3.0.13"
+  }
+}
