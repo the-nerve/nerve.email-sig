@@ -3,7 +3,10 @@ import {signatureConfig, colors} from './config';
 /*
   For overriding link colors forced by email clients: https://www.litmus.com/blog/how-to-remove-blue-links-in-html-emails/
   Dark Mode reference: https://www.litmus.com/blog/the-ultimate-guide-to-dark-mode-for-email-marketers/#
-  Inline with: https://htmlemail.io/inline/
+  Resource: Simple inline with: https://templates.mailchimp.com/resources/inline-css/
+  Resource: Deep inline with: https://alter.email/
+  Resource: Solid blog about email templates: https://www.smashingmagazine.com/2021/04/complete-guide-html-email-templates-tools/
+  TODO: Use the JUICE Library to automatically generate new signatures: https://github.com/Automattic/juice
 */
 export const signatures =  signatureConfig.people.map( ({firstName, lastName, role, avatar}) => `
     <!DOCTYPE html>
@@ -175,7 +178,7 @@ export const signatures =  signatureConfig.people.map( ({firstName, lastName, ro
                              <tr>
 
                                 <td class="avatar">
-                                    <img width="80px" src="${avatar}" />
+                                    <img width="80" alt="${firstName} ${lastName}, ${role} at The Nerve" src="${avatar}" />
                                 </td>
 
                                 <td class="content">
@@ -203,21 +206,21 @@ export const signatures =  signatureConfig.people.map( ({firstName, lastName, ro
                     <tr>
                         <td class="online-presence">
                             <span class="item website">
-                                <p class="linkOverride">
+                                <span class="linkOverride">
                                     <a class="link" href="${signatureConfig.companyWebsite}?utm_source=generalEmail&utm_medium=emailSignatureWebsite&utm_campaign=${firstName}" target="_blank" rel="noreferrer noopener">nervetheatre.org</a>
-                                </p>
+                                </span>
                             </span>
                             <span class="item separator">
                                 |
                             </span>
                             <span class="item social">
                                 <a class="link" href="${signatureConfig.social.facebook.link}" target="_blank" rel="noreferrer noopener">
-                                    <img class="icon" src="${signatureConfig.social.facebook.icon}" />
+                                    <img class="icon" alt="Facebook Icon" src="${signatureConfig.social.facebook.icon}" />
                                 </a>
                             </span>
                             <span class="item social">
                                 <a class="link" href="${signatureConfig.social.instagram.link}" target="_blank" rel="noreferrer noopener">
-                                    <img class="icon" src="${signatureConfig.social.instagram.icon}" />
+                                    <img alt="Instagram Icon" class="icon" src="${signatureConfig.social.instagram.icon}" />
                                 </a>
                             </span>
                         </td>
@@ -226,7 +229,7 @@ export const signatures =  signatureConfig.people.map( ({firstName, lastName, ro
                     <tr>
                         <td class="logo linkOverride">
                             <a class="logo-link" href="${signatureConfig.companyWebsite}?utm_source=generalEmail&utm_medium=emailSignatureLogo&utm_campaign=${firstName}" target="_blank" rel="noreferrer noopener">
-                                <img width="100px" src="${signatureConfig.companyLogo}" />
+                                <img width="100" alt="The Nerve's company logo" src="${signatureConfig.companyLogo}" />
                             </a>
                         </td>
                     </tr>

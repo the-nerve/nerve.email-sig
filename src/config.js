@@ -1,4 +1,4 @@
-const signatureAssetURL = 'https://nerve-assets.s3.us-east-2.amazonaws.com/email-signature'
+const signatureAssetURL = 'https://email-signatures.nervetheatre.org'
 
 export const signatureConfig = {
     companyWebsite: 'https://nervetheatre.org',
