@@ -10,8 +10,32 @@ import { signatureConfig } from '../src/config.js';
 
 const OUTPUT_DIR = path.join(process.cwd(), '/output');
 
-if (!fs.existsSync(OUTPUT_DIR)){
-    fs.mkdirSync(OUTPUT_DIR);
+const createOutputDir = async () => {
+    try {
+        if (!fs.existsSync(OUTPUT_DIR)){
+            console.log(`Creating fresh output directory...`);
+            fs.mkdirSync(OUTPUT_DIR);
+            console.log(`Output directory created at: ${OUTPUT_DIR}`);
+        }
+    } catch (error) {
+        console.error(`Error creating output directory at ${OUTPUT_DIR}`, error);
+    }
+}
+
+const removeStaleOutputDir = async () => {
+    try {
+        console.log(`Deleting output directory...`);
+        fs.rm(OUTPUT_DIR, { recursive: true, force: true }, error => {
+            if(error){
+                console.error(`Error while deleting output directory.`, error);
+                return;
+            }
+            console.log(`Output directory was successfully deleted!`);
+        });
+
+    } catch (error) {
+
+    }
 }
 
 // Juice Repo + Docs: https://github.com/Automattic/juice
@@ -31,33 +55,29 @@ const juiceOptions = {
 }
 
 const writeSignatureFile = (name, signatureHTML) => {
+
     const path = `${OUTPUT_DIR}/${name}.html`
     fs.writeFile( path, signatureHTML, err => {
         if (err) {
           console.error(err)
           return
         }
-        console.log(`Signature generated at: ${path}`);
+        console.log(`New signature generated at: ${path}`);
       })
 }
 
-const hydratedSignatures = signatureConfig.people.map( person => {
+const processedSignatures = signatureConfig.people.map( person => {
     const hydratedTemplate = signatureTemplate({...person})
-    const signature = juice(hydratedTemplate, juiceOptions);
+    const juicedHTML = juice( hydratedTemplate, juiceOptions);
+    const minfiedHTML = crush( juicedHTML, defaults ).result
     return {
         name: person.firstName.toLowerCase(),
-        html: signature
+        html: minfiedHTML
     }
 })
 
-console.log(hydratedSignatures);
-
-const minifiedSignatures = hydratedSignatures.map( ({name, html}) => {
-    const signature = crush( html, defaults ).result
-    return {
-        name,
-        html: signature
-    };
-})
-
-minifiedSignatures.forEach( ({name, html}) => writeSignatureFile(name, html))
+;(async function generateSignatures(){
+    await removeStaleOutputDir();
+    await createOutputDir();
+    processedSignatures.forEach( ({name, html}) => writeSignatureFile(name, html))
+})();
