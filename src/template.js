@@ -1,4 +1,4 @@
-import {signatureConfig, colors} from './config';
+import {signatureConfig, colors} from './config.js';
 
 /*
   For overriding link colors forced by email clients: https://www.litmus.com/blog/how-to-remove-blue-links-in-html-emails/
@@ -8,7 +8,7 @@ import {signatureConfig, colors} from './config';
   Resource: Solid blog about email templates: https://www.smashingmagazine.com/2021/04/complete-guide-html-email-templates-tools/
   TODO: Use the JUICE Library to automatically generate new signatures: https://github.com/Automattic/juice
 */
-export const signatures =  signatureConfig.people.map( ({firstName, lastName, role, avatar}) => `
+export const signatureTemplate = ({firstName, lastName, role, avatar}) => `
     <!DOCTYPE html>
     <html>
     <head>
@@ -175,7 +175,7 @@ export const signatures =  signatureConfig.people.map( ({firstName, lastName, ro
                 <tr>
                     <td class="wrapper">
                         <table>
-                             <tr>
+                            <tr>
 
                                 <td class="avatar">
                                     <img width="80" alt="${firstName} ${lastName}, ${role} at The Nerve" src="${avatar}" />
@@ -239,4 +239,4 @@ export const signatures =  signatureConfig.people.map( ({firstName, lastName, ro
         </table>
     </body>
     </html>
-`)
+`

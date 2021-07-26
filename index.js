@@ -1,4 +1,4 @@
-import {signatures} from './src/signature';
+import {signatures} from './src/signatures';
 
 /*
   Print the responsive HTML generated and MJML errors if any

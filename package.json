@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Dynamically generate email signatures for The Nerve",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
@@ -25,7 +26,11 @@
     "url": "https://github.com/the-nerve/nerve.email-sig/issues"
   },
   "homepage": "https://github.com/the-nerve/nerve.email-sig#readme",
-  "dependencies": {},
+  "dependencies": {
+    "assert": "^2.0.0",
+    "html-crush": "^4.2.0",
+    "juice": "^8.0.0"
+  },
   "devDependencies": {
     "snowpack": "^3.0.13"
   }
