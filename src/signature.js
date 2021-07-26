@@ -196,6 +196,7 @@ export const signatures =  signatureConfig.people.map( ({firstName, lastName, ro
                                                     ${role}
                                                 </td>
                                             </tr>
+
                                         </tbody>
                                     </table>
                                 </td>
@@ -207,7 +208,7 @@ export const signatures =  signatureConfig.people.map( ({firstName, lastName, ro
                         <td class="online-presence">
                             <span class="item website">
                                 <span class="linkOverride">
-                                    <a class="link" href="${signatureConfig.companyWebsite}?utm_source=generalEmail&utm_medium=emailSignatureWebsite&utm_campaign=${firstName}" target="_blank" rel="noreferrer noopener">nervetheatre.org</a>
+                                    <a class="link" href="${signatureConfig.companyWebsite}" target="_blank" rel="noreferrer noopener">nervetheatre.org</a>
                                 </span>
                             </span>
                             <span class="item separator">
@@ -228,7 +229,7 @@ export const signatures =  signatureConfig.people.map( ({firstName, lastName, ro
 
                     <tr>
                         <td class="logo linkOverride">
-                            <a class="logo-link" href="${signatureConfig.companyWebsite}?utm_source=generalEmail&utm_medium=emailSignatureLogo&utm_campaign=${firstName}" target="_blank" rel="noreferrer noopener">
+                            <a class="logo-link" href="${signatureConfig.companyWebsite}" target="_blank" rel="noreferrer noopener">
                                 <img width="100" alt="The Nerve's company logo" src="${signatureConfig.companyLogo}" />
                             </a>
                         </td>
