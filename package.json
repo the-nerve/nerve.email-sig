@@ -30,6 +30,7 @@
   "dependencies": {
     "assert": "^2.0.0",
     "html-crush": "^4.2.0",
+    "html-validator": "^5.1.17",
     "juice": "^8.0.0"
   },
   "devDependencies": {

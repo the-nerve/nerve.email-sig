@@ -1,12 +1,17 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 import resolve from 'resolve';
 import path from 'path';
 import juice from 'juice'
+import HtmlValidator from 'html-validator';
 import { strict as assert } from "assert";
 import { crush, defaults } from "html-crush";
 
 import { signatureTemplate } from '../src/template.js';
 import { signatureConfig } from '../src/config.js';
+
+// TODO... write functionality with promises to fix race conditions
+// TODO: validate html after generating & before writing html to files
+// TODO: strip out undesired tags
 
 const OUTPUT_DIR = path.join(process.cwd(), '/output');
 
